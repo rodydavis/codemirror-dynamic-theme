@@ -1,4 +1,4 @@
-import{r as g,o as h,e as m,s as f,$ as v,C,a as u,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const i of e.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=t(r);fetch(r.href,e)}};x();var z=`/* BASICS */
+import{r as p,$ as b,o as f,e as m,s as v,C,a as u,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const i of e.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=t(r);fetch(r.href,e)}};x();var z=`/* BASICS */
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
@@ -342,25 +342,160 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
-`,T=Object.defineProperty,S=Object.getOwnPropertyDescriptor,s=(n,o,t,a)=>{for(var r=a>1?void 0:a?S(o,t):o,e=n.length-1,i;e>=0;e--)(i=n[e])&&(r=(a?i(o,t,r):i(r))||r);return a&&r&&T(o,t,r),r};let c=class extends f{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
-`),this.color="#6750A4",this.dark=window.matchMedia("(prefers-color-scheme: dark)").matches}render(){return v`<main>
+`;const T=p`
+  .CodeMirror {
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+  }
+
+  .CodeMirror-gutters {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    border: none;
+  }
+
+  .CodeMirror-guttermarker,
+  .CodeMirror-guttermarker-subtle,
+  .CodeMirror-linenumber {
+    color: var(--md-sys-color-on-background);
+  }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid var(--md-sys-color-primary);
+  }
+  .cm-fat-cursor .CodeMirror-cursor {
+    background-color: var(--md-sys-color-background);
+  }
+  .cm-animate-fat-cursor {
+    background-color: var(--md-sys-color-background);
+  }
+
+  div.CodeMirror-selected {
+    background: var(--md-sys-color-surface-variant);
+  }
+
+  .CodeMirror-focused div.CodeMirror-selected {
+    background: var(--md-sys-color-surface-variant);
+  }
+
+  .CodeMirror-line::selection,
+  .CodeMirror-line > span::selection,
+  .CodeMirror-line > span > span::selection {
+    background: var(--md-sys-color-surface-variant);
+  }
+
+  .CodeMirror-line::-moz-selection,
+  .CodeMirror-line > span::-moz-selection,
+  .CodeMirror-line > span > span::-moz-selection {
+    background: var(--md-sys-color-surface-variant);
+  }
+
+  .CodeMirror-activeline-background {
+    background: var(--md-sys-color-surface);
+  }
+
+  .cm-keyword {
+    color: var(--md-custom-color-keyword) !important;
+  }
+
+  .cm-operator {
+    color: var(--md-custom-color-operator) !important;
+  }
+
+  .cm-variable-2 {
+    color: var(--md-custom-color-variable-2) !important;
+  }
+
+  .cm-variable-3,
+  .cm-type {
+    color: var(--md-custom-color-variable-3) !important;
+  }
+
+  .cm-builtin {
+    color: var(--md-custom-color-builtin) !important;
+  }
+
+  .cm-atom {
+    color: var(--md-custom-color-atom) !important;
+  }
+
+  .cm-number {
+    color: var(--md-custom-color-number) !important;
+  }
+
+  .cm-def {
+    color: var(--md-custom-color-def) !important;
+  }
+
+  .cm-string {
+    color: var(--md-custom-color-string) !important;
+  }
+
+  .cm-string-2 {
+    color: var(--md-custom-color-string-2) !important;
+  }
+
+  .cm-comment {
+    color: var(--md-custom-color-comment) !important;
+  }
+
+  .cm-variable {
+    color: var(--md-custom-color-variable) !important;
+  }
+
+  .cm-tag {
+    color: var(--md-custom-color-tag) !important;
+  }
+
+  .cm-meta {
+    color: var(--md-custom-color-meta) !important;
+  }
+
+  .cm-attribute {
+    color: var(--md-custom-color-attribute) !important;
+  }
+
+  .cm-property {
+    color: var(--md-custom-color-property) !important;
+  }
+
+  .cm-qualifier {
+    color: var(--md-custom-color-qualifier) !important;
+  }
+
+  .cm-variable-3,
+  .cm-type {
+    color: var(--md-custom-color-variable-3) !important;
+  }
+
+  .cm-error {
+    color: var(--md-sys-color-on-error);
+    background-color: var(--md-sys-color-error);
+  }
+
+  .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: var(--md-sys-color-on-surface);
+  }
+`,S=b` <a
+  href="https://github.com/rodydavis/codemirror-dynamic-theme"
+  target="_blank"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+      fill="var(--md-sys-color-on-primary-container)"
+    />
+  </svg>
+</a>`;var D=Object.defineProperty,P=Object.getOwnPropertyDescriptor,s=(n,o,t,a)=>{for(var r=a>1?void 0:a?P(o,t):o,e=n.length-1,i;e>=0;e--)(i=n[e])&&(r=(a?i(o,t,r):i(r))||r);return a&&r&&D(o,t,r),r};let c=class extends v{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
+`),this.color="#6750A4",this.dark=window.matchMedia("(prefers-color-scheme: dark)").matches}render(){return b`<main>
       <header class="toolbar">
-        <a
-          href="https://github.com/rodydavis/codemirror-dynamic-theme"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              fill="var(--md-sys-color-on-primary-container)"
-            />
-          </svg>
-        </a>
+        ${S}
         <div class="title">Codemirror Dynamic Theme</div>
         <div class="spacer"></div>
         <div class="actions">
@@ -378,8 +513,9 @@ span.CodeMirror-selectedtext { background: none; }
         </div>
       </header>
       <div class="editor"></div>
-    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{this.dark=t.matches,this.updateTheme()})}updateTheme(){const n=this.color,o=this.dark,t=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(i=>{const[l,d]=i.split(":"),p=l.replace(/^--md-custom-color-/,"").trim(),b=u(d.trim().replace(";",""));return{name:p,value:b,blend:!0}}),e=M(u(n),r);y(e,{target:t,dark:o});for(const i of e.customColors){const l=i.color.name,d=o?i.dark:i.light;t.style.setProperty(`--md-custom-color-${l}`,k(d.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}toggleDark(){this.dark=!this.dark,this.updateTheme()}randomColor(){const n="0123456789ABCDEF";let o="#";for(let t=0;t<6;t++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=g`
-    ${h(z)}
+    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{this.dark=t.matches,this.updateTheme()})}updateTheme(){const n=this.color,o=this.dark,t=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(i=>{const[l,d]=i.split(":"),g=l.trim().replace(/^--md-custom-color-/,""),h=u(d.trim().replace(";",""));return{name:g,value:h,blend:!0}}),e=M(u(n),r);y(e,{target:t,dark:o});for(const i of e.customColors){const l=i.color.name,d=o?i.dark:i.light;t.style.setProperty(`--md-custom-color-${l}`,k(d.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}toggleDark(){this.dark=!this.dark,this.updateTheme()}randomColor(){const n="0123456789ABCDEF";let o="#";for(let t=0;t<6;t++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=p`
+    ${f(z)}
+    ${T}
 
     main {
       width: 100vw;
@@ -457,145 +593,12 @@ span.CodeMirror-selectedtext { background: none; }
       color: var(--md-sys-color-on-secondary);
     }
 
-    .editor,
-    .CodeMirror {
-      height: calc(100% - var(--header-height));
-      width: 100%;
-      background-color: var(--md-sys-color-background);
-      color: var(--md-sys-color-on-background);
-    }
-
     .spacer {
       flex: 1;
     }
 
-    .CodeMirror-gutters {
-      background: var(--md-sys-color-surface-variant);
-      color: var(--md-sys-color-on-surface-variant);
-      border: none;
-    }
-
-    .CodeMirror-guttermarker,
-    .CodeMirror-guttermarker-subtle,
-    .CodeMirror-linenumber {
-      color: var(--md-sys-color-on-background);
-    }
-
-    .CodeMirror-cursor {
-      border-left: 1px solid var(--md-sys-color-primary);
-    }
-    .cm-fat-cursor .CodeMirror-cursor {
-      background-color: var(--md-sys-color-background);
-    }
-    .cm-animate-fat-cursor {
-      background-color: var(--md-sys-color-background);
-    }
-
-    div.CodeMirror-selected {
-      background: var(--md-sys-color-surface-variant);
-    }
-
-    .CodeMirror-focused div.CodeMirror-selected {
-      background: var(--md-sys-color-surface-variant);
-    }
-
-    .CodeMirror-line::selection,
-    .CodeMirror-line > span::selection,
-    .CodeMirror-line > span > span::selection {
-      background: var(--md-sys-color-surface-variant);
-    }
-
-    .CodeMirror-line::-moz-selection,
-    .CodeMirror-line > span::-moz-selection,
-    .CodeMirror-line > span > span::-moz-selection {
-      background: var(--md-sys-color-surface-variant);
-    }
-
-    .CodeMirror-activeline-background {
-      background: var(--md-sys-color-surface);
-    }
-
-    .cm-keyword {
-      color: var(--md-custom-color-keyword) !important;
-    }
-
-    .cm-operator {
-      color: var(--md-custom-color-operator) !important;
-    }
-
-    .cm-variable-2 {
-      color: var(--md-custom-color-variable-2) !important;
-    }
-
-    .cm-variable-3,
-    .cm-type {
-      color: var(--md-custom-color-variable-3) !important;
-    }
-
-    .cm-builtin {
-      color: var(--md-custom-color-builtin) !important;
-    }
-
-    .cm-atom {
-      color: var(--md-custom-color-atom) !important;
-    }
-
-    .cm-number {
-      color: var(--md-custom-color-number) !important;
-    }
-
-    .cm-def {
-      color: var(--md-custom-color-def) !important;
-    }
-
-    .cm-string {
-      color: var(--md-custom-color-string) !important;
-    }
-
-    .cm-string-2 {
-      color: var(--md-custom-color-string-2) !important;
-    }
-
-    .cm-comment {
-      color: var(--md-custom-color-comment) !important;
-    }
-
-    .cm-variable {
-      color: var(--md-custom-color-variable) !important;
-    }
-
-    .cm-tag {
-      color: var(--md-custom-color-tag) !important;
-    }
-
-    .cm-meta {
-      color: var(--md-custom-color-meta) !important;
-    }
-
-    .cm-attribute {
-      color: var(--md-custom-color-attribute) !important;
-    }
-
-    .cm-property {
-      color: var(--md-custom-color-property) !important;
-    }
-
-    .cm-qualifier {
-      color: var(--md-custom-color-qualifier) !important;
-    }
-
-    .cm-variable-3,
-    .cm-type {
-      color: var(--md-custom-color-variable-3) !important;
-    }
-
-    .cm-error {
-      color: var(--md-sys-color-on-error);
-      background-color: var(--md-sys-color-error);
-    }
-
-    .CodeMirror-matchingbracket {
-      text-decoration: underline;
-      color: var(--md-sys-color-on-surface);
+    .editor {
+      height: calc(100% - var(--header-height));
+      width: 100%;
     }
   `;s([m()],c.prototype,"value",2);s([m()],c.prototype,"color",2);s([m({type:Boolean})],c.prototype,"dark",2);c=s([w("code-window")],c);
