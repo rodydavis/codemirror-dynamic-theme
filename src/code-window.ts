@@ -22,7 +22,6 @@ export class CodeWindow extends LitElement {
       height: 100vh;
       background-color: var(--md-sys-color-background);
       color: var(--md-sys-color-on-background);
-      /* overflow: hidden; */
       --header-height: 48px;
       --input-size: 32px;
     }
@@ -35,10 +34,9 @@ export class CodeWindow extends LitElement {
       align-items: center;
     }
 
-    .actions > *,
-    .title {
-      padding-left: 8px;
-      padding-right: 8px;
+    .actions > * {
+      margin-left: 4px;
+      margin-right: 4px;
     }
 
     .toolbar .title {
@@ -80,11 +78,19 @@ export class CodeWindow extends LitElement {
     }
 
     button {
-      background-color: var(--md-sys-color-tertiary);
-      color: var(--md-sys-color-on-tertiary);
       border: none;
       border-radius: 4px;
       padding: 8px;
+    }
+
+    .tertiary {
+      background-color: var(--md-sys-color-tertiary);
+      color: var(--md-sys-color-on-tertiary);
+    }
+
+    .secondary {
+      background-color: var(--md-sys-color-secondary);
+      color: var(--md-sys-color-on-secondary);
     }
 
     .editor,
@@ -246,6 +252,9 @@ export class CodeWindow extends LitElement {
   ].join("\n");
 
   @property() color = "#6750A4";
+  @property({ type: Boolean }) dark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
 
   render() {
     return html`<main>
@@ -269,7 +278,12 @@ export class CodeWindow extends LitElement {
         <div class="title">Codemirror Dynamic Theme</div>
         <div class="spacer"></div>
         <div class="actions">
-          <button @click=${this.randomColor.bind(this)}>Random</button>
+          <button class="secondary" @click=${this.toggleDark.bind(this)}>
+            ${this.dark ? "Light" : "Dark"}
+          </button>
+          <button class="tertiary" @click=${this.randomColor.bind(this)}>
+            Random
+          </button>
           <input
             type="color"
             .value=${this.color}
@@ -298,12 +312,15 @@ export class CodeWindow extends LitElement {
     this.updateTheme();
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", () => this.updateTheme());
+      .addEventListener("change", (e) => {
+        this.dark = e.matches;
+        this.updateTheme();
+      });
   }
 
   updateTheme() {
     const source = this.color;
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = this.dark;
     const target = this.shadowRoot!.querySelector("main") as HTMLElement;
     const properties = [
       `--md-custom-color-keyword: #c75779;`,
@@ -355,6 +372,11 @@ export class CodeWindow extends LitElement {
   onColor(e: Event) {
     const target = e.target as HTMLInputElement;
     this.setColor(target.value);
+  }
+
+  toggleDark() {
+    this.dark = !this.dark;
+    this.updateTheme();
   }
 
   randomColor() {
