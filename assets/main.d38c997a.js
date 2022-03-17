@@ -1,4 +1,4 @@
-import{r as f,o as g,e as u,s as h,$ as v,C,a as m,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function i(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=i(r);fetch(r.href,e)}};x();var z=`/* BASICS */
+import{r as g,o as h,e as m,s as f,$ as v,C,a as u,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const i of e.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=t(r);fetch(r.href,e)}};x();var z=`/* BASICS */
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
@@ -342,8 +342,8 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
-`,S=Object.defineProperty,T=Object.getOwnPropertyDescriptor,d=(n,o,i,a)=>{for(var r=a>1?void 0:a?T(o,i):o,e=n.length-1,t;e>=0;e--)(t=n[e])&&(r=(a?t(o,i,r):t(r))||r);return a&&r&&S(o,i,r),r};let c=class extends h{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
-`),this.color="#6750A4"}render(){return v`<main>
+`,T=Object.defineProperty,S=Object.getOwnPropertyDescriptor,s=(n,o,t,a)=>{for(var r=a>1?void 0:a?S(o,t):o,e=n.length-1,i;e>=0;e--)(i=n[e])&&(r=(a?i(o,t,r):i(r))||r);return a&&r&&T(o,t,r),r};let c=class extends f{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
+`),this.color="#6750A4",this.dark=window.matchMedia("(prefers-color-scheme: dark)").matches}render(){return v`<main>
       <header class="toolbar">
         <a
           href="https://github.com/rodydavis/codemirror-dynamic-theme"
@@ -364,7 +364,12 @@ span.CodeMirror-selectedtext { background: none; }
         <div class="title">Codemirror Dynamic Theme</div>
         <div class="spacer"></div>
         <div class="actions">
-          <button @click=${this.randomColor.bind(this)}>Random</button>
+          <button class="secondary" @click=${this.toggleDark.bind(this)}>
+            ${this.dark?"Light":"Dark"}
+          </button>
+          <button class="tertiary" @click=${this.randomColor.bind(this)}>
+            Random
+          </button>
           <input
             type="color"
             .value=${this.color}
@@ -373,15 +378,14 @@ span.CodeMirror-selectedtext { background: none; }
         </div>
       </header>
       <div class="editor"></div>
-    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>this.updateTheme())}updateTheme(){const n=this.color,o=window.matchMedia("(prefers-color-scheme: dark)").matches,i=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(t=>{const[l,s]=t.split(":"),p=l.replace(/^--md-custom-color-/,"").trim(),b=m(s.trim().replace(";",""));return{name:p,value:b,blend:!0}}),e=M(m(n),r);y(e,{target:i,dark:o});for(const t of e.customColors){const l=t.color.name,s=o?t.dark:t.light;i.style.setProperty(`--md-custom-color-${l}`,k(s.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}randomColor(){const n="0123456789ABCDEF";let o="#";for(let i=0;i<6;i++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=f`
-    ${g(z)}
+    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{this.dark=t.matches,this.updateTheme()})}updateTheme(){const n=this.color,o=this.dark,t=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(i=>{const[l,d]=i.split(":"),p=l.replace(/^--md-custom-color-/,"").trim(),b=u(d.trim().replace(";",""));return{name:p,value:b,blend:!0}}),e=M(u(n),r);y(e,{target:t,dark:o});for(const i of e.customColors){const l=i.color.name,d=o?i.dark:i.light;t.style.setProperty(`--md-custom-color-${l}`,k(d.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}toggleDark(){this.dark=!this.dark,this.updateTheme()}randomColor(){const n="0123456789ABCDEF";let o="#";for(let t=0;t<6;t++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=g`
+    ${h(z)}
 
     main {
       width: 100vw;
       height: 100vh;
       background-color: var(--md-sys-color-background);
       color: var(--md-sys-color-on-background);
-      /* overflow: hidden; */
       --header-height: 48px;
       --input-size: 32px;
     }
@@ -394,10 +398,9 @@ span.CodeMirror-selectedtext { background: none; }
       align-items: center;
     }
 
-    .actions > *,
-    .title {
-      padding-left: 8px;
-      padding-right: 8px;
+    .actions > * {
+      margin-left: 4px;
+      margin-right: 4px;
     }
 
     .toolbar .title {
@@ -439,11 +442,19 @@ span.CodeMirror-selectedtext { background: none; }
     }
 
     button {
-      background-color: var(--md-sys-color-tertiary);
-      color: var(--md-sys-color-on-tertiary);
       border: none;
       border-radius: 4px;
       padding: 8px;
+    }
+
+    .tertiary {
+      background-color: var(--md-sys-color-tertiary);
+      color: var(--md-sys-color-on-tertiary);
+    }
+
+    .secondary {
+      background-color: var(--md-sys-color-secondary);
+      color: var(--md-sys-color-on-secondary);
     }
 
     .editor,
@@ -587,4 +598,4 @@ span.CodeMirror-selectedtext { background: none; }
       text-decoration: underline;
       color: var(--md-sys-color-on-surface);
     }
-  `;d([u()],c.prototype,"value",2);d([u()],c.prototype,"color",2);c=d([w("code-window")],c);
+  `;s([m()],c.prototype,"value",2);s([m()],c.prototype,"color",2);s([m({type:Boolean})],c.prototype,"dark",2);c=s([w("code-window")],c);
