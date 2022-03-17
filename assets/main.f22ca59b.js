@@ -1,4 +1,4 @@
-import{r as f,o as g,e as u,s as h,$ as v,C,a as m,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))c(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&c(t)}).observe(document,{childList:!0,subtree:!0});function i(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function c(r){if(r.ep)return;r.ep=!0;const e=i(r);fetch(r.href,e)}};x();var z=`/* BASICS */
+import{r as f,o as g,e as u,s as h,$ as v,C,a as m,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const t of e.addedNodes)t.tagName==="LINK"&&t.rel==="modulepreload"&&a(t)}).observe(document,{childList:!0,subtree:!0});function i(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=i(r);fetch(r.href,e)}};x();var z=`/* BASICS */
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
@@ -342,9 +342,25 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
-`,S=Object.defineProperty,T=Object.getOwnPropertyDescriptor,d=(n,o,i,c)=>{for(var r=c>1?void 0:c?T(o,i):o,e=n.length-1,t;e>=0;e--)(t=n[e])&&(r=(c?t(o,i,r):t(r))||r);return c&&r&&S(o,i,r),r};let a=class extends h{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
+`,S=Object.defineProperty,T=Object.getOwnPropertyDescriptor,d=(n,o,i,a)=>{for(var r=a>1?void 0:a?T(o,i):o,e=n.length-1,t;e>=0;e--)(t=n[e])&&(r=(a?t(o,i,r):t(r))||r);return a&&r&&S(o,i,r),r};let c=class extends h{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
 `),this.color="#6750A4"}render(){return v`<main>
       <header class="toolbar">
+        <a
+          href="https://github.com/rodydavis/codemirror-dynamic-theme"
+          target="_blank"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              fill="var(--md-sys-color-on-primary-container)"
+            />
+          </svg>
+        </a>
         <div class="title">Codemirror Dynamic Theme</div>
         <div class="spacer"></div>
         <div class="actions">
@@ -357,7 +373,7 @@ span.CodeMirror-selectedtext { background: none; }
         </div>
       </header>
       <div class="editor"></div>
-    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>this.updateTheme())}updateTheme(){const n=this.color,o=window.matchMedia("(prefers-color-scheme: dark)").matches,i=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(t=>{const[l,s]=t.split(":"),p=l.replace(/^--md-custom-color-/,"").trim(),b=m(s.trim().replace(";",""));return{name:p,value:b,blend:!0}}),e=M(m(n),r);y(e,{target:i,dark:o});for(const t of e.customColors){const l=t.color.name,s=o?t.dark:t.light;i.style.setProperty(`--md-custom-color-${l}`,k(s.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}randomColor(){const n="0123456789ABCDEF";let o="#";for(let i=0;i<6;i++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};a.styles=f`
+    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>this.updateTheme())}updateTheme(){const n=this.color,o=window.matchMedia("(prefers-color-scheme: dark)").matches,i=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(t=>{const[l,s]=t.split(":"),p=l.replace(/^--md-custom-color-/,"").trim(),b=m(s.trim().replace(";",""));return{name:p,value:b,blend:!0}}),e=M(m(n),r);y(e,{target:i,dark:o});for(const t of e.customColors){const l=t.color.name,s=o?t.dark:t.light;i.style.setProperty(`--md-custom-color-${l}`,k(s.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}randomColor(){const n="0123456789ABCDEF";let o="#";for(let i=0;i<6;i++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=f`
     ${g(z)}
 
     main {
@@ -378,19 +394,31 @@ span.CodeMirror-selectedtext { background: none; }
       align-items: center;
     }
 
+    .actions > *,
+    .title {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
     .toolbar .title {
       font-family: sans-serif;
       font-size: 18px;
-    }
-
-    .toolbar * {
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 4px;
     }
 
     .toolbar .actions {
       display: flex;
       align-items: center;
+    }
+
+    .toolbar a {
+      padding: 0;
+      margin: 0;
+      padding-left: 8px;
+      padding-right: 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
     }
 
     input[type="color"] {
@@ -559,4 +587,4 @@ span.CodeMirror-selectedtext { background: none; }
       text-decoration: underline;
       color: var(--md-sys-color-on-surface);
     }
-  `;d([u()],a.prototype,"value",2);d([u()],a.prototype,"color",2);a=d([w("code-window")],a);
+  `;d([u()],c.prototype,"value",2);d([u()],c.prototype,"color",2);c=d([w("code-window")],c);
