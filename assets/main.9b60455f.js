@@ -1,4 +1,4 @@
-import{r as p,$ as b,o as f,e as m,s as v,C,a as u,t as M,b as y,h as k,n as w}from"./vendor.8067569f.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const i of e.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=t(r);fetch(r.href,e)}};x();var z=`/* BASICS */
+import{r as p,$ as b,o as f,e as m,s as v,C,a as u,t as k,b as M,h as y,n as w}from"./vendor.ea2a94ce.js";const x=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const e of r)if(e.type==="childList")for(const i of e.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(r){const e={};return r.integrity&&(e.integrity=r.integrity),r.referrerpolicy&&(e.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?e.credentials="include":r.crossorigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function a(r){if(r.ep)return;r.ep=!0;const e=t(r);fetch(r.href,e)}};x();var z=`/* BASICS */
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
@@ -60,13 +60,19 @@ import{r as p,$ as b,o as f,e as m,s as v,C,a as u,t as M,b as y,h as k,n as w}f
 .cm-fat-cursor div.CodeMirror-cursors {
   z-index: 1;
 }
-.cm-fat-cursor .CodeMirror-line::selection,
-.cm-fat-cursor .CodeMirror-line > span::selection, 
-.cm-fat-cursor .CodeMirror-line > span > span::selection { background: transparent; }
-.cm-fat-cursor .CodeMirror-line::-moz-selection,
-.cm-fat-cursor .CodeMirror-line > span::-moz-selection,
-.cm-fat-cursor .CodeMirror-line > span > span::-moz-selection { background: transparent; }
-.cm-fat-cursor { caret-color: transparent; }
+.cm-fat-cursor-mark {
+  background-color: rgba(20, 255, 20, 0.5);
+  -webkit-animation: blink 1.06s steps(1) infinite;
+  -moz-animation: blink 1.06s steps(1) infinite;
+  animation: blink 1.06s steps(1) infinite;
+}
+.cm-animate-fat-cursor {
+  width: auto;
+  -webkit-animation: blink 1.06s steps(1) infinite;
+  -moz-animation: blink 1.06s steps(1) infinite;
+  animation: blink 1.06s steps(1) infinite;
+  background-color: #7e7;
+}
 @-moz-keyframes blink {
   0% {}
   50% { background-color: transparent; }
@@ -164,7 +170,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   height: 100%;
   outline: none; /* Prevent dragging from highlighting the element */
   position: relative;
-  z-index: 0;
 }
 .CodeMirror-sizer {
   position: relative;
@@ -342,7 +347,7 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
-`;const T=p`
+`;const S=p`
   .CodeMirror {
     background-color: var(--md-sys-color-background);
     color: var(--md-sys-color-on-background);
@@ -477,7 +482,7 @@ span.CodeMirror-selectedtext { background: none; }
     text-decoration: underline;
     color: var(--md-sys-color-on-surface);
   }
-`,S=b` <a
+`,T=b` <a
   href="https://github.com/rodydavis/codemirror-dynamic-theme"
   target="_blank"
 >
@@ -492,11 +497,11 @@ span.CodeMirror-selectedtext { background: none; }
       fill="var(--md-sys-color-on-primary-container)"
     />
   </svg>
-</a>`;var D=Object.defineProperty,P=Object.getOwnPropertyDescriptor,s=(n,o,t,a)=>{for(var r=a>1?void 0:a?P(o,t):o,e=n.length-1,i;e>=0;e--)(i=n[e])&&(r=(a?i(o,t,r):i(r))||r);return a&&r&&D(o,t,r),r};let c=class extends v{constructor(){super(...arguments);this.value=["function findSequence(goal) {","  function find(start, history) {","    if (start == goal) return history;","    else if (start > goal) return null;","    else","      return (",'        find(start + 5, "(" + history + " + 5)") ||','        find(start * 3, "(" + history + " * 3)")',"      );","  }",'  return find(1, "1");',"}"].join(`
+</a>`;var $=Object.defineProperty,E=Object.getOwnPropertyDescriptor,s=(n,o,t,a)=>{for(var r=a>1?void 0:a?E(o,t):o,e=n.length-1,i;e>=0;e--)(i=n[e])&&(r=(a?i(o,t,r):i(r))||r);return a&&r&&$(o,t,r),r};let c=class extends v{constructor(){super(...arguments);this.value=["import {html, css, LitElement} from 'lit';","import {customElement, property} from 'lit/decorators.js';","","@customElement('simple-greeting')","export class SimpleGreeting extends LitElement {","  static styles = css`p { color: blue }`;","","  @property()","  name = 'Somebody';","","  render() {","    return html`<p>Hello, ${this.name}!</p>`;","  }","}"].join(`
 `),this.color="#6750A4",this.dark=window.matchMedia("(prefers-color-scheme: dark)").matches}render(){return b`<main>
       <header class="toolbar">
-        ${S}
-        <div class="title">Codemirror Dynamic Theme</div>
+        ${T}
+        <div class="title">${document.title}</div>
         <div class="spacer"></div>
         <div class="actions">
           <button class="secondary" @click=${this.toggleDark.bind(this)}>
@@ -513,9 +518,9 @@ span.CodeMirror-selectedtext { background: none; }
         </div>
       </header>
       <div class="editor"></div>
-    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{this.dark=t.matches,this.updateTheme()})}updateTheme(){const n=this.color,o=this.dark,t=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(i=>{const[l,d]=i.split(":"),g=l.trim().replace(/^--md-custom-color-/,""),h=u(d.trim().replace(";",""));return{name:g,value:h,blend:!0}}),e=M(u(n),r);y(e,{target:t,dark:o});for(const i of e.customColors){const l=i.color.name,d=o?i.dark:i.light;t.style.setProperty(`--md-custom-color-${l}`,k(d.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}toggleDark(){this.dark=!this.dark,this.updateTheme()}randomColor(){const n="0123456789ABCDEF";let o="#";for(let t=0;t<6;t++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=p`
+    </main>`}firstUpdated(){const n=this.shadowRoot.querySelector(".editor"),o=C(n,{value:this.value,mode:"javascript",lineNumbers:!0,lineWrapping:!0,indentUnit:4,tabSize:4,indentWithTabs:!0,autofocus:!0});console.debug(o),o.setSize("100%","100%"),this.updateTheme(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{this.dark=t.matches,this.updateTheme()})}updateTheme(){const n=this.color,o=this.dark,t=this.shadowRoot.querySelector("main"),r=["--md-custom-color-keyword: #c75779;","--md-custom-color-operator: #008800;","--md-custom-color-variable: #90ccff;","--md-custom-color-variable-2: #dd7700;","--md-custom-color-variable-3: #3333bb;","--md-custom-color-variable-3: #decb6b;","--md-custom-color-builtin: #003388;","--md-custom-color-atom: #bb4646;","--md-custom-color-number: #b4c5ff;","--md-custom-color-def: #82aaff;","--md-custom-color-string: #ffb4a9;","--md-custom-color-string-2: #ffb4a9;","--md-custom-color-comment: #888888;","--md-custom-color-tag: #000080;","--md-custom-color-meta: #a9c7ff;","--md-custom-color-attribute: #008080;","--md-custom-color-property: #336699;","--md-custom-color-qualifier: #690;"].map(i=>{const[l,d]=i.split(":"),g=l.trim().replace(/^--md-custom-color-/,""),h=u(d.trim().replace(";",""));return{name:g,value:h,blend:!0}}),e=k(u(n),r);M(e,{target:t,dark:o});for(const i of e.customColors){const l=i.color.name,d=o?i.dark:i.light;t.style.setProperty(`--md-custom-color-${l}`,y(d.color))}}setColor(n){this.color=n,this.updateTheme()}onColor(n){const o=n.target;this.setColor(o.value)}toggleDark(){this.dark=!this.dark,this.updateTheme()}randomColor(){const n="0123456789ABCDEF";let o="#";for(let t=0;t<6;t++)o+=n[Math.floor(Math.random()*16)];this.setColor(o)}};c.styles=p`
     ${f(z)}
-    ${T}
+    ${S}
 
     main {
       width: 100vw;
