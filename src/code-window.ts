@@ -130,7 +130,7 @@ export class CodeWindow extends LitElement {
     return html`<main>
       <header class="toolbar">
         ${sourceLogo}
-        <div class="title">Codemirror Dynamic Theme</div>
+        <div class="title">${document.title}</div>
         <div class="spacer"></div>
         <div class="actions">
           <button class="secondary" @click=${this.toggleDark.bind(this)}>
