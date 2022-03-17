@@ -17,11 +17,13 @@
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.1.1",
-    "codemirror": "^5.65.2",
+    "codemirror": "=5.63.0",
+    "codemirror-grammar-mode": "^0.1.10",
     "lit": "^2.0.2"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.5",
+    "google_modes": "git+https://github.com/codemirror/google-modes.git#e4725332b9bba4c3418f29a28f3042799d559e76",
     "@types/node": "^17.0.21",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"

@@ -8,9 +8,7 @@ import {
 } from "@material/material-color-utilities";
 import CodeMirror from "codemirror";
 import codemirrorStyles from "codemirror/lib/codemirror.css";
-import "codemirror/mode/javascript/javascript";
-import "codemirror/mode/xml/xml";
-import "codemirror/mode/css/css";
+import "./codemirror";
 import { codeMirrorTheme } from "./theme";
 import { sourceLogo } from "./logo";
 
@@ -107,17 +105,19 @@ export class CodeWindow extends LitElement {
   `;
 
   @property() value = [
-    `function findSequence(goal) {`,
-    `  function find(start, history) {`,
-    `    if (start == goal) return history;`,
-    `    else if (start > goal) return null;`,
-    `    else`,
-    `      return (`,
-    `        find(start + 5, "(" + history + " + 5)") ||`,
-    `        find(start * 3, "(" + history + " * 3)")`,
-    `      );`,
+    `import {html, css, LitElement} from 'lit';`,
+    `import {customElement, property} from 'lit/decorators.js';`,
+    ``,
+    `@customElement('simple-greeting')`,
+    `export class SimpleGreeting extends LitElement {`,
+    `  static styles = css\`p { color: blue }\`;`,
+    ``,
+    `  @property()`,
+    `  name = 'Somebody';`,
+    ``,
+    `  render() {`,
+    `    return html\`<p>Hello, \${this.name}!</p>\`;`,
     `  }`,
-    `  return find(1, "1");`,
     `}`,
   ].join("\n");
 
