@@ -16758,22 +16758,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 let CodeWindow = class extends s {
   constructor() {
     super(...arguments);
-    this.value = [
-      `import {html, css, LitElement} from 'lit';`,
-      `import {customElement, property} from 'lit/decorators.js';`,
-      ``,
-      `@customElement('simple-greeting')`,
-      `export class SimpleGreeting extends LitElement {`,
-      `  static styles = css\`p { color: blue }\`;`,
-      ``,
-      `  @property()`,
-      `  name = 'Somebody';`,
-      ``,
-      `  render() {`,
-      `    return html\`<p>Hello, \${this.name}!</p>\`;`,
-      `  }`,
-      `}`
-    ].join("\n");
+    this.value = "";
     this.color = "#6750A4";
     this.dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
@@ -16801,6 +16786,11 @@ let CodeWindow = class extends s {
     </main>`;
   }
   firstUpdated() {
+    const script = this.querySelectorAll("script");
+    if (script.length > 0) {
+      const code = script[0].textContent || "";
+      this.value = code.trim();
+    }
     const root = this.shadowRoot.querySelector(".editor");
     const editor = CodeMirror(root, {
       value: this.value,
