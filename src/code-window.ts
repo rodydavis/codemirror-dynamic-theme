@@ -233,12 +233,20 @@ export class CodeWindow extends LitElement {
     this.setColor(color);
   }
 
-  setCode(value: string) {
+  set code(value: string) {
     this.value = value;
     const editor = this.editor;
     if (editor) {
       editor.setValue(value);
     }
+  }
+
+  get code() {
+    const editor = this.editor;
+    if (editor) {
+      return editor.getValue();
+    }
+    return "";
   }
 }
 
