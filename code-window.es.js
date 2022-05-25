@@ -16792,7 +16792,7 @@ let CodeWindow = class extends s {
       this.value = code.trim();
     }
     const root = this.shadowRoot.querySelector(".editor");
-    const editor = CodeMirror(root, {
+    this.editor = CodeMirror(root, {
       value: this.value,
       mode: "javascript",
       lineNumbers: true,
@@ -16802,8 +16802,7 @@ let CodeWindow = class extends s {
       indentWithTabs: true,
       autofocus: true
     });
-    console.debug(editor);
-    editor.setSize("100%", `100%`);
+    this.editor.setSize("100%", `100%`);
     this.updateTheme();
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e2) => {
       this.dark = e2.matches;
@@ -16871,6 +16870,13 @@ let CodeWindow = class extends s {
       color += letters[Math.floor(Math.random() * 16)];
     }
     this.setColor(color);
+  }
+  setCode(value) {
+    this.value = value;
+    const editor = this.editor;
+    if (editor) {
+      editor.setValue(value);
+    }
   }
 };
 CodeWindow.styles = r$2`
