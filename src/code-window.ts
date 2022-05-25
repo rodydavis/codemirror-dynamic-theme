@@ -110,6 +110,7 @@ export class CodeWindow extends LitElement {
   @property({ type: Boolean }) dark = window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
+  editor?: CodeMirror.Editor;
 
   render() {
     return html`<main>
@@ -142,7 +143,7 @@ export class CodeWindow extends LitElement {
       this.value = code.trim();
     }
     const root = this.shadowRoot!.querySelector(".editor") as HTMLElement;
-    const editor = CodeMirror(root, {
+    this.editor = CodeMirror(root, {
       value: this.value,
       mode: "javascript",
       lineNumbers: true,
@@ -152,8 +153,7 @@ export class CodeWindow extends LitElement {
       indentWithTabs: true,
       autofocus: true,
     });
-    console.debug(editor);
-    editor.setSize("100%", `100%`);
+    this.editor.setSize("100%", `100%`);
     this.updateTheme();
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -231,6 +231,14 @@ export class CodeWindow extends LitElement {
       color += letters[Math.floor(Math.random() * 16)];
     }
     this.setColor(color);
+  }
+
+  setCode(value: string) {
+    this.value = value;
+    const editor = this.editor;
+    if (editor) {
+      editor.setValue(value);
+    }
   }
 }
 
