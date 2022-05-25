@@ -104,22 +104,7 @@ export class CodeWindow extends LitElement {
     }
   `;
 
-  @property() value = [
-    `import {html, css, LitElement} from 'lit';`,
-    `import {customElement, property} from 'lit/decorators.js';`,
-    ``,
-    `@customElement('simple-greeting')`,
-    `export class SimpleGreeting extends LitElement {`,
-    `  static styles = css\`p { color: blue }\`;`,
-    ``,
-    `  @property()`,
-    `  name = 'Somebody';`,
-    ``,
-    `  render() {`,
-    `    return html\`<p>Hello, \${this.name}!</p>\`;`,
-    `  }`,
-    `}`,
-  ].join("\n");
+  @property() value = "";
 
   @property() color = "#6750A4";
   @property({ type: Boolean }) dark = window.matchMedia(
@@ -151,6 +136,11 @@ export class CodeWindow extends LitElement {
   }
 
   firstUpdated() {
+    const script = this.querySelectorAll("script");
+    if (script.length > 0) {
+      const code = script[0].textContent || "";
+      this.value = code.trim();
+    }
     const root = this.shadowRoot!.querySelector(".editor") as HTMLElement;
     const editor = CodeMirror(root, {
       value: this.value,
