@@ -16871,12 +16871,19 @@ let CodeWindow = class extends s {
     }
     this.setColor(color);
   }
-  setCode(value) {
+  set code(value) {
     this.value = value;
     const editor = this.editor;
     if (editor) {
       editor.setValue(value);
     }
+  }
+  get code() {
+    const editor = this.editor;
+    if (editor) {
+      return editor.getValue();
+    }
+    return "";
   }
 };
 CodeWindow.styles = r$2`
